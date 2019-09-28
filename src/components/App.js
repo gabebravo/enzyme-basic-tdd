@@ -18,7 +18,9 @@ export default class App extends Component {
       <div>
         <h2>Gift Giver</h2>
         <button onClick={this.addGift}>Add Gift</button>
-        {this.state.gifts && this.renderGifts(this.state.gifts)}
+        <div id="gifts-wrapper">
+          {this.state.gifts && this.renderGifts(this.state.gifts)}
+        </div>
       </div>
     );
   }
