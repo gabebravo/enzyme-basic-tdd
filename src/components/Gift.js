@@ -9,8 +9,9 @@ export default class Gift extends Component {
   handleChange = ev => this.setState({ [ev.target.name]: ev.target.value });
 
   render() {
+    const { giftId, removeGift } = this.props;
     return (
-      <div>
+      <div style={{ marginTop: 20, marginBottom: 20 }}>
         <input
           onChange={this.handleChange}
           placeholder="gift recipients name"
@@ -23,6 +24,9 @@ export default class Gift extends Component {
           className="input-present"
           name="present"
         />
+        <button className="remove-button" onClick={() => removeGift(giftId)}>
+          Remove
+        </button>
       </div>
     );
   }

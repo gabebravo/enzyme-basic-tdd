@@ -11,11 +11,19 @@ export default class App extends Component {
       gifts: [...prevGifts.gifts, { id: prevGifts.gifts.length + 1 }]
     }));
 
-  renderGifts = () => [...this.state.gifts].map(gift => <Gift key={gift.id} />);
+  removeGift = id =>
+    this.setState(prevGifts => ({
+      gifts: [...prevGifts.gifts].filter(gift => gift.id !== id)
+    }));
+
+  renderGifts = () =>
+    [...this.state.gifts].map(gift => (
+      <Gift key={gift.id} giftId={gift.id} removeGift={this.removeGift} />
+    ));
 
   render() {
     return (
-      <div>
+      <div style={{ textAlign: 'center' }}>
         <h2>Gift Giver</h2>
         <button onClick={this.addGift}>Add Gift</button>
         <div id="gifts-wrapper">

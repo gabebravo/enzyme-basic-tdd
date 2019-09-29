@@ -5,7 +5,11 @@ import Adapter from 'enzyme-adapter-react-16';
 configure({ adapter: new Adapter() });
 
 describe('Gift', () => {
-  const gift = shallow(<Gift />);
+  // mock instance of a jest function
+  const mockRemove = jest.fn(() => true);
+  const id = 1;
+  const props = { id, removeGift: mockRemove };
+  const gift = shallow(<Gift {...props} />);
 
   // test the component against the snapshot
   it('renders properly', () => {
@@ -41,6 +45,18 @@ describe('Gift', () => {
 
     it('updates the present in `state`', () => {
       expect(gift.state().present).toEqual(present);
+    });
+  });
+
+  describe('when clicking the `Remove Gift` button', () => {
+    beforeEach(() => {
+      gift.find('.remove-button').simulate('click');
+    });
+
+    // we need a jest mock function to run this test - look up top
+    // all this does is check that the function was run
+    it('calls the removeGift callback', () => {
+      expect(mockRemove).toHaveBeenCalled();
     });
   });
 });
