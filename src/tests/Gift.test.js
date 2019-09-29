@@ -17,15 +17,30 @@ describe('Gift', () => {
   });
 
   describe('when typing into the person input', () => {
+    const name = 'person';
     const person = 'Uncle';
     beforeEach(() => {
       gift
         .find('.input-person') // simulate below on change - the 2nd param obj is the ev.target obj
-        .simulate('change', { target: { value: person } });
+        .simulate('change', { target: { name, value: person } });
     });
 
     it('updates the person in `state`', () => {
       expect(gift.state().person).toEqual(person);
+    });
+  });
+
+  describe('when typing into the present input', () => {
+    const name = 'present';
+    const present = 'Polo shirt';
+    beforeEach(() => {
+      gift
+        .find('.input-present') // simulate below on change - the 2nd param obj is the ev.target obj
+        .simulate('change', { target: { name, value: present } });
+    });
+
+    it('updates the present in `state`', () => {
+      expect(gift.state().present).toEqual(present);
     });
   });
 });

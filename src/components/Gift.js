@@ -6,7 +6,7 @@ export default class Gift extends Component {
     present: ''
   };
 
-  handleChange = ev => this.setState({ person: ev.target.value });
+  handleChange = ev => this.setState({ [ev.target.name]: ev.target.value });
 
   render() {
     return (
@@ -16,6 +16,12 @@ export default class Gift extends Component {
           placeholder="gift recipients name"
           className="input-person"
           name="person"
+        />
+        <input
+          onChange={this.handleChange}
+          placeholder="gift recipients name"
+          className="input-present"
+          name="present"
         />
       </div>
     );

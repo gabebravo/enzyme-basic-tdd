@@ -33,5 +33,9 @@ describe('App', () => {
       const giftsWrapper = app.find('#gifts-wrapper').children();
       expect(giftsWrapper.length).toEqual(app.state().gifts.length);
     });
+
+    it('creates a `gift component`', () => {
+      expect(app.find('Gift').exists()).toBe(true);
+    });
   });
 });
