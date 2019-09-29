@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Gift from './Gift';
 
 export default class App extends Component {
   state = {
@@ -17,6 +18,7 @@ export default class App extends Component {
     return (
       <div>
         <h2>Gift Giver</h2>
+        <Gift />
         <button onClick={this.addGift}>Add Gift</button>
         <div id="gifts-wrapper">
           {this.state.gifts && this.renderGifts(this.state.gifts)}
